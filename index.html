@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.Planets Solar system:short reference</title>
+    <style>
+        /* Общие стили */
+        :root {
+            --primary-color: #4facfe;
+            --secondary-color: #2c80d0;
+            --dark-bg: #0a0a2a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-color: #fff;
+            --text-secondary: #e0e0ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background: linear-gradient(to right, #1a1a4a, var(--dark-bg));
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Главная страница */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(rgba(10, 10, 42, 0.9), rgba(10, 10, 42, 0.95));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.3"/><circle cx="60" cy="40" r="0.7" fill="white" opacity="0.2"/><circle cx="80" cy="70" r="0.5" fill="white" opacity="0.4"/><circle cx="40" cy="80" r="0.8" fill="white" opacity="0.3"/></svg>');
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Сетка планет */
+        .planets-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+        
+        .planets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .planet-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .planet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .planet-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .planet-info {
+            padding: 20px;
+        }
+        
+        .planet-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .planet-type {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .terrestrial {
+            background: #4CAF50;
+        }
+        
+        .gas-giant {
+            background: #2196F3;
+        }
+        
+        .ice-giant {
+            background: #03A9F4;
+        }
+        
+        .dwarf {
+            background: #FF9800;
+        }
+        
+        .planet-description {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .planet-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .planet-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Страница планеты */
+        .planet-page {
+            padding: 60px 0;
+            display: none;
+        }
+        
+        .planet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .planet-image-large {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin-right: 40px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .planet-title {
+            flex: 1;
+        }
+        
+        .planet-title h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .planet-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .info-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .info-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            width: 180px;
+            color: #aaa;
+        }
+        
+        .info-value {
+            flex: 1;
+        }
+        
+        .fact-list {
+            list-style-type: none;
+        }
+        
+        .fact-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .fact-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 10px 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        .back-link:hover {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        /* Подвал */
+        footer {
+            background: #050518;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            color: #aaa;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .planet-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .planet-image-large {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 250px;
+                height: 250px;
+            }
+            
+            .planet-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-item {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .planets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .planet-image-large {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .planet-title h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Солнечная система</div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Главная</a></li>
+                        <li><a href="#planets">Планеты</a></li>
+                        <li><a href="#about">О проекте</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главная страница -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Планеты Солнечной системы</h1>
+                <p>Исследуйте удивительные миры нашей Солнечной системы: от раскаленного Меркурия до ледяного Нептуна. Узнайте об их характеристиках, спутниках и уникальных особенностях.</p>
+                <a href="#planets" class="btn">Исследовать планеты</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сетка планет -->
+    <section id="planets" class="planets-section container">
+        <h2 class="section-title">Планеты Солнечной системы</h2>
+        <div class="planets-grid">
+            <!-- Меркурий -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://media.sketchfab.com/models/ccb6c6a9ac3742109cc67c0f16032b49/thumbnails/24e537fb291b48738179bb71c21474e1/3841de01390943c88abb0fa10f1cfd3a.jpeg')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Меркурий</h3>
+                    <span class="planet-type terrestrial">Планета земной группы</span>
+                    <p class="planet-description">Ближайшая к Солнцу планета и самая маленькая в Солнечной системе.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('mercury')">Подробнее →</a>
+                </div>
+            </div>  
+
+            <!-- Венера -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://avatars.dzeninfra.ru/get-zen_doc/3950500/pub_5f6af96b62f30d46f1aeccc8_5f6b00ce62f30d46f1bbbc13/scale_1200')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Венера</h3>
+                    <span class="planet-type terrestrial">Планета земной группы</span>
+                    <p class="planet-description">Вторая планета от Солнца с самой горячей поверхностью.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('venus')">Подробнее →</a>
+                </div>
+            </div>
+            
+            <!-- Земля -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Земля</h3>
+                    <span class="planet-type terrestrial">Планета земной группы</span>
+                    <p class="planet-description">Третья планета от Солнца, единственная известная обитаемая планета.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('earth')">Подробнее →</a>
+                </div>
+            </div>
+            
+            <!-- Марс -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Марс</h3>
+                    <span class="planet-type terrestrial">Планета земной группы</span>
+                    <p class="planet-description">Четвертая планета от Солнца, известная как "Красная планета".</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('mars')">Подробнее →</a>
+                </div>
+            </div>
+            <!-- Юпитер -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://cdn.nur.kz/images/1120x630/aa972ca9218c01d7.jpeg?version=1')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Юпитер</h3>
+                    <span class="planet-type gas-giant">Газовый гигант</span>
+                    <p class="planet-description">Крупнейшая планета Солнечной системы, газовый гигант.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('jupiter')">Подробнее →</a>
+                </div>
+            </div>
+            <!-- Сатурн -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://pic.rutubelist.ru/video/62/e8/62e89fa1af234960d08acb04b53cb75f.jpg')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Сатурн</h3>
+                    <span class="planet-type gas-giant">Газовый гигант</span>
+                    <p class="planet-description">Шестая планета от Солнца, известная своими кольцами.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('saturn')">Подробнее →</a>
+                </div>
+            </div>
+            <!-- Уран -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://rossaprimavera.ru/static/files/6024742eeb5d.jpg')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Уран</h3>
+                    <span class="planet-type ice-giant">Ледяной гигант</span>
+                    <p class="planet-description">Седьмая планета от Солнца, ледяной гигант.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('uranus')">Подробнее →</a>
+                </div>
+            </div>
+            <!-- Нептун -->
+            <div class="planet-card">
+                <div class="planet-image" style="background-image: url('https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+                <div class="planet-info">
+                    <h3 class="planet-name">Нептун</h3>
+                    <span class="planet-type ice-giant">Ледяной гигант</span>
+                    <p class="planet-description">Восьмая и самая дальняя планета от Солнца.</p>
+                    <a href="#" class="planet-link" onclick="showPlanet('neptune')">Подробнее →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Страница Меркурия -->
+    <section id="mercury-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://media.sketchfab.com/models/ccb6c6a9ac3742109cc67c0f16032b49/thumbnails/24e537fb291b48738179bb71c21474e1/3841de01390943c88abb0fa10f1cfd3a.jpeg')"></div>
+            <div class="planet-title">
+                <h1>Меркурий</h1>
+                <span class="planet-type terrestrial">Планета земной группы</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">4 879 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">3,3×10<sup>23</sup> кг (0,055 Земли)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">5,427 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">88 земных дней</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">0,034°</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">57,9 млн км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Очень разреженная, состоит из:</p>
+                    <ul class="fact-list">
+                        <li>Кислород (42%)</li>
+                        <li>Натрий (29%)</li>
+                        <li>Водород (22%)</li>
+                        <li>Гелий (6%)</li>
+                        <li>Другие элементы (1%)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>У Меркурия нет естественных спутников.</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Меркурий - самая маленькая планета Солнечной системы</li>
+                        <li>Температура поверхности колеблется от -173°C до 427°C</li>
+                        <li>Совершает три оборота вокруг своей оси за два оборота вокруг Солнца</li>
+                        <li>Имеет огромное железное ядро, составляющее около 85% радиуса планеты</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Поверхность покрыта кратерами, похожа на лунную</li>
+                        <li>Имеет очень слабое магнитное поле</li>
+                        <li>Из-за отсутствия атмосферы небо всегда черное, даже днем</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Венеры -->
+    <section id="venus-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://avatars.dzeninfra.ru/get-zen_doc/3950500/pub_5f6af96b62f30d46f1aeccc8_5f6b00ce62f30d46f1bbbc13/scale_1200')"></div>
+            <div class="planet-title">
+                <h1>Венера</h1>
+                <span class="planet-type terrestrial">Планета земной группы</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">12 104 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">4,87×10<sup>24</sup> кг (0,815 Земли)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">5,24 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">225 земных дней</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">177,4° (ретроградное вращение)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">108,2 млн км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Плотная атмосфера состоит из:</p>
+                    <ul class="fact-list">
+                        <li>Углекислый газ (96,5%)</li>
+                        <li>Азот (3,5%)</li>
+                        <li>Диоксид серы (0,015%)</li>
+                        <li>Аргон (0,007%)</li>
+                        <li>Водяной пар (0,002%)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>У Венеры нет естественных спутников.</p>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Венера - самая горячая планета Солнечной системы</li>
+                        <li>Температура поверхности достигает 462°C</li>
+                        <li>Вращается в обратном направлении по сравнению с другими планетами</li>
+                        <li>День на Венере длиннее, чем год</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Атмосферное давление в 92 раза больше земного</li>
+                        <li>Поверхность скрыта под толстым слоем облаков</li>
+                        <li>Имеет активную вулканическую деятельность</li>
+                        <li>Облака состоят из серной кислоты</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Земли -->
+    <section id="earth-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="planet-title">
+                <h1>Земля</h1>
+                <span class="planet-type terrestrial">Планета земной группы</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">12 742 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">5,97×10<sup>24</sup> кг</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">5,515 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">365,25 дней</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">23,44°</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">149,6 млн км (1 а.е.)</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Состав атмосферы:</p>
+                    <ul class="fact-list">
+                        <li>Азот (78%)</li>
+                        <li>Кислород (21%)</li>
+                        <li>Аргон (0,93%)</li>
+                        <li>Углекислый газ (0,04%)</li>
+                        <li>Другие газы</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>1 естественный спутник:</p>
+                    <ul class="fact-list">
+                        <li>Луна</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Единственная известная планета с жизнью</li>
+                        <li>71% поверхности покрыто водой</li>
+                        <li>Имеет мощное магнитное поле, защищающее от солнечного ветра</li>
+                        <li>Самая плотная планета Солнечной системы</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Активная тектоника плит</li>
+                        <li>Наличие жидкой воды на поверхности</li>
+                        <li>Разнообразие климатических зон</li>
+                        <li>Наличие защитного озонового слоя</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Марса -->
+    <section id="mars-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="planet-title">
+                <h1>Марс</h1>
+                <span class="planet-type terrestrial">Планета земной группы</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">6 779 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">6,42×10<sup>23</sup> кг (0,107 Земли)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">3,93 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">687 земных дней</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">25,19°</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">227,9 млн км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Разреженная атмосфера состоит из:</p>
+                    <ul class="fact-list">
+                        <li>Углекислый газ (95%)</li>
+                        <li>Азот (2,7%)</li>
+                        <li>Аргон (1,6%)</li>
+                        <li>Кислород (0,13%)</li>
+                        <li>Окись углерода (0,08%)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>2 естественных спутника:</p>
+                    <ul class="fact-list">
+                        <li>Фобос</li>
+                        <li>Деймос</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Марс называют "Красной планетой" из-за оксида железа</li>
+                        <li>На Марсе находится самая высокая гора в Солнечной системе - Олимп</li>
+                        <li>Имеет сезоны, похожие на земные, но вдвое длиннее</li>
+                        <li>Температура колеблется от -153°C до 20°C</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Поверхность покрыта кратерами, каньонами и вулканами</li>
+                        <li>Имеет полярные ледяные шапки из водяного льда и сухого льда</li>
+                        <li>На поверхности обнаружены следы древних рек и озер</li>
+                        <li>Атмосферное давление составляет менее 1% земного</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Юпитера -->
+    <section id="jupiter-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://cdn.nur.kz/images/1120x630/aa972ca9218c01d7.jpeg?version=1')"></div>
+            <div class="planet-title">
+                <h1>Юпитер</h1>
+                <span class="planet-type gas-giant">Газовый гигант</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">139 820 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">1,9×10<sup>27</sup> кг (318 Земель)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">1,33 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">11,86 земных лет</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">3,13°</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">778,5 млн км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Состав атмосферы:</p>
+                    <ul class="fact-list">
+                        <li>Водород (90%)</li>
+                        <li>Гелий (10%)</li>
+                        <li>Метан (0,3%)</li>
+                        <li>Аммиак (0,026%)</li>
+                        <li>Водяной пар (0,0004%)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>79 известных спутников, основные:</p>
+                    <ul class="fact-list">
+                        <li>Ио</li>
+                        <li>Европа</li>
+                        <li>Ганимед</li>
+                        <li>Каллисто</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Юпитер - самая большая планета Солнечной системы</li>
+                        <li>Имеет знаменитое Большое Красное Пятно - гигантский шторм</li>
+                        <li>Масса Юпитера в 2,5 раза больше массы всех остальных планет вместе взятых</li>
+                        <li>Излучает больше тепла, чем получает от Солнца</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Имеет слабую систему колец</li>
+                        <li>Обладает мощным магнитным полем</li>
+                        <li>Атмосфера состоит из полос облаков разного цвета</li>
+                        <li>Вращается быстрее всех планет - сутки длятся около 10 часов</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Сатурна -->
+    <section id="saturn-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://pic.rutubelist.ru/video/62/e8/62e89fa1af234960d08acb04b53cb75f.jpg')"></div>
+            <div class="planet-title">
+                <h1>Сатурн</h1>
+                <span class="planet-type gas-giant">Газовый гигант</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">116 460 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">5,68×10<sup>26</sup> кг (95 Земель)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">0,687 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">29,46 земных лет</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">26,73°</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">1,43 млрд км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Состав атмосферы:</p>
+                    <ul class="fact-list">
+                        <li>Водород (96%)</li>
+                        <li>Гелий (3%)</li>
+                        <li>Метан (0,4%)</li>
+                        <li>Аммиак (0,01%)</li>
+                        <li>Этан, ацетилен, фосфин</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>82 известных спутника, основные:</p>
+                    <ul class="fact-list">
+                        <li>Титан</li>
+                        <li>Рея</li>
+                        <li>Япет</li>
+                        <li>Диона</li>
+                        <li>Тефия</li>
+                        <li>Энцелад</li>
+                        <li>Мимас</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Сатурн - вторая по величине планета Солнечной системы</li>
+                        <li>Имеет самую заметную систему колец</li>
+                        <li>Самая низкая плотность среди всех планет - мог бы плавать в воде</li>
+                        <li>Скорость ветра в атмосфере может достигать 1800 км/ч</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Кольца состоят в основном из частиц льда и пыли</li>
+                        <li>Имеет выраженное полярное сияние</li>
+                        <li>Обладает гексагональным штормом на северном полюсе</li>
+                        <li>Спутник Титан имеет плотную атмосферу и жидкие моря из метана</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Урана -->
+    <section id="uranus-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://rossaprimavera.ru/static/files/6024742eeb5d.jpg')"></div>
+            <div class="planet-title">
+                <h1>Уран</h1>
+                <span class="planet-type ice-giant">Ледяной гигант</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">50 724 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">8,68×10<sup>25</sup> кг (14,5 Земель)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">1,27 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">84 земных года</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">97,77° (лежит на боку)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">2,87 млрд км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Состав атмосферы:</p>
+                    <ul class="fact-list">
+                        <li>Водород (83%)</li>
+                        <li>Гелий (15%)</li>
+                        <li>Метан (2%)</li>
+                        <li>Аммиак, вода, сероводород</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>27 известных спутников, основные:</p>
+                    <ul class="fact-list">
+                        <li>Титания</li>
+                        <li>Оберон</li>
+                        <li>Умбриэль</li>
+                        <li>Ариэль</li>
+                        <li>Миранда</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Уран - первая планета, открытая с помощью телескопа</li>
+                        <li>Вращается "лежа на боку" - ось вращения почти параллельна орбите</li>
+                        <li>Самая холодная планета Солнечной системы (-224°C)</li>
+                        <li>Открыт Уильямом Гершелем в 1781 году</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Имеет систему из 13 слабых колец</li>
+                        <li>Метан в атмосфере придает планете сине-зеленый цвет</li>
+                        <li>Магнитное поле смещено относительно центра планеты</li>
+                        <li>Сезоны длятся по 21 земному году из-за наклона оси</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Страница Нептуна -->
+    <section id="neptune-page" class="planet-page container">
+        <div class="planet-header">
+            <div class="planet-image-large" style="background-image: url('https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')"></div>
+            <div class="planet-title">
+                <h1>Нептун</h1>
+                <span class="planet-type ice-giant">Ледяной гигант</span>
+            </div>
+        </div>
+        
+        <div class="planet-content">
+            <div>
+                <div class="info-section">
+                    <h2>Основные характеристики</h2>
+                    <div class="info-item">
+                        <div class="info-label">Диаметр:</div>
+                        <div class="info-value">49 244 км</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Масса:</div>
+                        <div class="info-value">1,02×10<sup>26</sup> кг (17 Земель)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Плотность:</div>
+                        <div class="info-value">1,64 г/см³</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Период обращения:</div>
+                        <div class="info-value">164,8 земных года</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Наклон оси:</div>
+                        <div class="info-value">28,32°</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Расстояние от Солнца:</div>
+                        <div class="info-value">4,5 млрд км</div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Атмосфера</h2>
+                    <p>Состав атмосферы:</p>
+                    <ul class="fact-list">
+                        <li>Водород (80%)</li>
+                        <li>Гелий (19%)</li>
+                        <li>Метан (1,5%)</li>
+                        <li>Этан, ацетилен</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="info-section">
+                    <h2>Спутники</h2>
+                    <p>14 известных спутников, основные:</p>
+                    <ul class="fact-list">
+                        <li>Тритон</li>
+                        <li>Нереида</li>
+                        <li>Наяда</li>
+                        <li>Таласса</li>
+                        <li>Деспина</li>
+                        <li>Галатея</li>
+                        <li>Ларисса</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Интересные факты</h2>
+                    <ul class="fact-list">
+                        <li>Нептун - самая дальняя планета от Солнца</li>
+                        <li>Открыт на основе математических расчетов, а не наблюдений</li>
+                        <li>Имеет самое сильное магнитное поле среди планет-гигантов</li>
+                        <li>Самые быстрые ветры в Солнечной системе - до 2100 км/ч</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Особенности</h2>
+                    <ul class="fact-list">
+                        <li>Имеет систему из 5 слабых колец</li>
+                        <li>Метан поглощает красный свет, придавая планете синий цвет</li>
+                        <li>Спутник Тритон имеет ретроградную орбиту и геологическую активность</li>
+                        <li>Обладает "Большим Темным Пятном" - гигантским штормом</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="back-link" onclick="showPage('home')">← Назад к списку планет</a>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>Солнечная система: краткий справочник.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Функция для показа главной страницы
+        function showPage(pageId) {
+            // Скрыть все страницы
+            document.querySelectorAll('.planet-page').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('planets').style.display = 'block';
+            
+            // Прокрутить к началу
+            window.scrollTo(0, 0);
+        }
+        
+        // Функция для показа страницы планеты
+        function showPlanet(planetName) {
+            // Скрыть главную страницу и сетку планет
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('planets').style.display = 'none';
+            
+            // Скрыть все страницы планет
+            document.querySelectorAll('.planet-page').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Показать выбранную страницу планеты
+            document.getElementById(planetName + '-page').style.display = 'block';
+            
+            // Прокрутить к началу
+            window.scrollTo(0, 0);
+        }
+        
+        // Показать главную страницу при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+            
+        });
+    </script>
+</body>
+</html>
